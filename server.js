@@ -5,34 +5,29 @@ const  { engine }  = require("express-handlebars");
 const bodyParser = require("body-parser");
 const port = 8083;
 
-//Config
-//Template Engine
+// Config
+// Template Engine
 app.engine("handlebars", engine({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-//Conexão Banco
-const Sequelize = require("sequelize")
-const sequelize = new Sequelize ("EscolaMusica", "root", "teste", {
-    host: "localhost",
-    dialect: "mysql"
+// Body Parser
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+
+// Rotas
+app.get("/cad", function(req, res){
+  res.render("cadastro")
 });
 
-sequelize.authenticate( ).then(function(){
-    console.log("Conectado com sucesso!")
-}).catch(function(erro){
-    console.log("Falha ao se conectar: "+erro);
+app.post("/add", function(req, res){
+  res.send("Formulário Recebido! "+req.body.nome+" "+req.body.dataNascimento+" "+req.body.funcao+" "+req.body.senha+" "+" ")
 });
 
-const connection = mysql.createConnection({
-  host: 'localhost',          /* //127.0.0.1/3306 */
-  user: 'root',
-  password: 'teste',
-  database: 'EscolaMusica'
-});
-
+// Site
 app.get("/site", function(req, res){
   res.sendFile(__dirname + "/html/index.html");
 });

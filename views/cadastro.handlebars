@@ -1,0 +1,62 @@
+
+<header>
+    <h1 class="titulo1">Bem-vindo a Escola de Música
+        <br>Realize o cadastro na plataforma
+    </h1>
+    
+</header>
+
+<main>
+    <img src="/src/img/Orquestra.jpg"  class="img" alt="">
+    <div class="box">
+        <form action="/add" method="POST">
+            <fieldset>
+                <h1 class="titulo2">Cadastro de Músico</h1>
+                <br>
+                <br>
+                <legend>Informe o seu nome:</legend>
+                <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nome" id="floatingInput" placeholder="Nome Nome Nome">
+                        <label for="floatingInput">Nome</label>
+                    </div>
+                    <legend>Informe a sua data de nascimento:</legend>
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" name="dataNascimento" id="floatingInput" placeholder="xx/xx/xxxx">
+                        <label for="floatingInput">Data de nascimento</label>
+                    </div>
+                    <legend>Informe a sua função na orquestra:</legend>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="funcao" id="floatingInput" placeholder="Funcao">
+                        <label for="floatingInput">Função</label>
+                    </div>
+                    <legend>Digite uma senha:</legend>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="senha" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Senha</label>
+                    </div>
+                    <legend>Confirme a senha:</legend>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="confirmaSenha" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Confirme a senha</label>
+                    </div>
+                    <br>
+                    <br>
+                    <p class="texto-box tbx1">Fazer Login</p>
+                    <p class="texto-box tbx2">Voltar ao menu principal</p>
+                    <!-- Adicionei todos id - começando com letra maiuscula -->
+                    <span id="Botao-enviar">
+                    <button type="submit" class="btn btn-success">ENVIAR</button>
+                    </span>
+            </fieldset>
+        </form>
+    </div>
+
+    
+</main>
+
+<footer>
+    <h1 class="h1-footer">ANTES</h1>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
