@@ -1,37 +1,40 @@
 const db = require("./db");
-const musico = 'musico';
-const Post = db.sequelize.define(musico, {
+const Post = db.sequelize.define(
+  "musico",
+  {
     idMusico: {
       type: db.Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     nome: {
-        type: db.Sequelize.STRING,
-        allowNull: false
-    },
-    dataNascimento: {
-        type: db.Sequelize.DATE,
-        allowNull: false
+      type: db.Sequelize.STRING,
+      allowNull: false,
     },
     email: {
       type: db.Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     telefone: {
       type: db.Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    posicao: {
+    dataNascimento: {
+      type: db.Sequelize.DATE,
+      allowNull: false,
+    },
+    funcao: {
       type: db.Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     }
-  }, {
-    tableName: 'musico', // Especifica o nome da tabela
+  },
+  {
+    tableName: "musico", // Especifica o nome da tabela
     timestamps: true, // Isso cria campos createdAt e updatedAt automaticamente
-    freezeTableName: true // Desativa a pluralização automática
-  });
+    freezeTableName: true, // Desativa a pluralização automática
+  }
+);
 
 module.exports = Post;
 

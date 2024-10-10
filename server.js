@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const app = express();
 const  { engine }  = require("express-handlebars");
 const bodyParser = require("body-parser");
-const Post = require("./models/Post.js")
+const Post = require("./models/Post.js");
 const port = 8081;
 
 // Config
@@ -11,13 +11,9 @@ const port = 8081;
 app.engine("handlebars", engine({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
+// Body Parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
-// Body Parser
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-
 
 // Rotas
 app.get("/cad", function(req, res){
@@ -25,25 +21,26 @@ app.get("/cad", function(req, res){
 });
 
 app.get("/", function(req, res){
-  //res.render("home")
+  res.render("home");
 });
 
 app.post("/add", function(req, res){
+  console.log(req.body); // Adicione esta linha para verificar os dados recebidos
   Post.create({
     nome: req.body.nome,
-    dataNascimento: req.body.dataNascimento,
     email: req.body.email,
     telefone: req.body.telefone,
-    posicao: req.body.posicao
+    dataNascimento: req.body.dataNascimento,
+    funcao: req.body.funcao
   }).then(function(){
       res.redirect("/")
   }).catch(function(erro){
       res.send("Houve um erro: " + erro)
-  })
-  //res.send("Formulário Recebido! "+req.body.nome+" "+req.body.dataNascimento+" "+req.body.funcao+" "+req.body.senha+" "+" ")
+  });
+  /*res.send("Formulário Recebido! "+req.body.nome+" "+req.body.dataNascimento+" "+req.body.funcao+" "+req.body.senha+" "+" ")*/
 });
 
-// Site
+ /* Site
 app.get("/site", function(req, res){
   res.sendFile(__dirname + "/html/index.html");
 });

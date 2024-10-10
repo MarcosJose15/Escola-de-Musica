@@ -1,6 +1,6 @@
 // Conexão Banco
 
-const { Sequelize, DataTypes } = require("sequelize");
+const Sequelize = require("sequelize");
 const mysql = require('mysql');
 
 const sequelize = new Sequelize ("escolaMusica1", "root", "teste", {
@@ -13,8 +13,9 @@ sequelize.authenticate( ).then(function(){
 }).catch(function(erro){
   console.log("Falha ao se conectar: "+erro);
 }); 
-
-/*sequelize.sync({ force: true }).then(() => {
+/*
+-- CRIA TABELAS --
+sequelize.sync({ alter: true }).then(() => {
   console.log("Músico inserido com sucesso!");
 }).catch((erro) => {
   console.log("Erro ao inserir músico: " + erro);
