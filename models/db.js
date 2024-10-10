@@ -1,26 +1,30 @@
 // Conexão Banco
-const Sequelize = require("sequelize")
-const sequelize = new Sequelize ("EscolaMusica", "root", "teste", {
+
+const { Sequelize, DataTypes } = require("sequelize");
+const mysql = require('mysql');
+
+const sequelize = new Sequelize ("escolaMusica1", "root", "teste", {
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql" 
 });
-
-const connection = mysql.createConnection({
-    host: 'localhost',          /* //127.0.0.1/3306 */
-    user: 'root',
-    password: 'teste',
-    database: 'EscolaMusica'
-  });
-
-
-  module.exports = {
-    Sequelize: Sequelize,
-    sequelize: sequelize
-  }
 
 sequelize.authenticate( ).then(function(){
-    console.log("Conectado com sucesso!")
+  console.log("Conectado com sucesso!")
 }).catch(function(erro){
-    console.log("Falha ao se conectar: "+erro);
+  console.log("Falha ao se conectar: "+erro);
+}); 
+
+/*sequelize.sync({ force: true }).then(() => {
+  console.log("Músico inserido com sucesso!");
+}).catch((erro) => {
+  console.log("Erro ao inserir músico: " + erro);
 });
+*/
+
+module.exports = {
+  Sequelize: Sequelize,
+  sequelize: sequelize
+}
+
+
 

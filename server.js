@@ -3,7 +3,8 @@ const mysql = require('mysql2');
 const app = express();
 const  { engine }  = require("express-handlebars");
 const bodyParser = require("body-parser");
-const port = 8083;
+const Post = require("./models/Post.js")
+const port = 8081;
 
 // Config
 // Template Engine
@@ -23,8 +24,23 @@ app.get("/cad", function(req, res){
   res.render("cadastro")
 });
 
+app.get("/", function(req, res){
+  //res.render("home")
+});
+
 app.post("/add", function(req, res){
-  res.send("Formulário Recebido! "+req.body.nome+" "+req.body.dataNascimento+" "+req.body.funcao+" "+req.body.senha+" "+" ")
+  Post.create({
+    nome: req.body.nome,
+    dataNascimento: req.body.dataNascimento,
+    email: req.body.email,
+    telefone: req.body.telefone,
+    posicao: req.body.posicao
+  }).then(function(){
+      res.redirect("/")
+  }).catch(function(erro){
+      res.send("Houve um erro: " + erro)
+  })
+  //res.send("Formulário Recebido! "+req.body.nome+" "+req.body.dataNascimento+" "+req.body.funcao+" "+req.body.senha+" "+" ")
 });
 
 // Site
@@ -34,7 +50,7 @@ app.get("/site", function(req, res){
 
 // Rota para visualizar os dados
 app.get('/dados', (req, res) => {
-  connection.query('SELECT * FROM EscolaMusica', (error, results) => {
+  connection.query('SELECT * FROM escolaMusica1', (error, results) => {
     if (error) {
       return res.status(500).send(error);
     }
